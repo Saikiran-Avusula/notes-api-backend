@@ -62,7 +62,7 @@
 <!--			<scope>runtime</scope>-->
 <!--		</dependency>-->
 
-<!--		Switch to PostgreSQL (Render doesn't offer free MySQL)-->
+<!--		Switch to PostgreSQL (railway doesn't offer free MySQL)-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>

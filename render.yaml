@@ -15,10 +15,18 @@ services:
         fromDatabase:
           name: notes-db
           property: password
-      - key: JDBC_DATABASE_URL
+      - key: PGHOST
         fromDatabase:
           name: notes-db
-          property: connectionString
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: notes-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: notes-db
+          property: databaseName
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION

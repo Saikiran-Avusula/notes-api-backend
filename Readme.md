@@ -208,3 +208,47 @@ Day 3 Checklist
 ✅ Tested with JWT authentication
 ✅ Tested user isolation (user1 can't see user2's notes)
 ✅ Code pushed to GitHub
+
+## Local Database Setup (Docker)
+
+### Why Docker?
+We use Docker to run PostgreSQL locally because **Render (our deployment platform) uses PostgreSQL**.
+Using Docker ensures our local environment matches production exactly. If we used MySQL locally and Postgres in production, we might face SQL syntax errors or compatibility issues during deployment. Docker gives us a "production-like" database instantly without installing Postgres manually on Windows.
+
+### Step 1: Start the Database
+Before running the backend, start the database container:
+```powershell
+docker-compose up -d
+```
+
+### Step 2: Verify Database Data
+Since the database is running in a Docker container, you can't open it like a normal file. Here is how to check your data:
+
+### Option 1: Quick CLI Check
+Run this command in your terminal to open a SQL shell inside the container:
+```powershell
+docker exec -it notes-db-local psql -U postgres -d postgres
+```
+
+Then run standard SQL queries:
+```sql
+-- See all tables
+\dt
+
+-- See all users
+SELECT * FROM users;
+
+-- See all notes
+SELECT * FROM notes;
+
+-- Exit
+\q
+```
+
+### Option 2: GUI Client (DBeaver, pgAdmin)
+Connect using these credentials:
+- **Host**: localhost
+- **Port**: 5432
+- **Database**: postgres
+- **Username**: postgres
+- **Password**: password

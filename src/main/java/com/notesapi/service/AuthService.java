@@ -5,7 +5,7 @@ import com.notesapi.dto.AuthResponse;
 import com.notesapi.dto.LoginRequest;
 import com.notesapi.dto.RegisterRequest;
 import com.notesapi.model.User;
-import com.notesapi.repositroy.UserRepository;
+import com.notesapi.repository.UserRepository;
 import com.notesapi.security.JwtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

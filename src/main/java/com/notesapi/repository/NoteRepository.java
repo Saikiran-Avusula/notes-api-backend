@@ -1,4 +1,4 @@
-package com.notesapi.repositroy;
+package com.notesapi.repository;
 
 import com.notesapi.model.Note;
 import org.springframework.data.jpa.repository.JpaRepository;

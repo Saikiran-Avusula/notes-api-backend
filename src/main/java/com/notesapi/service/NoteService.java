@@ -4,7 +4,7 @@ import com.notesapi.dto.NoteRequest;
 import com.notesapi.dto.NoteResponse;
 import com.notesapi.model.Note;
 import com.notesapi.model.User;
-import com.notesapi.repositroy.NoteRepository;
+import com.notesapi.repository.NoteRepository;
 import com.notesapi.security.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

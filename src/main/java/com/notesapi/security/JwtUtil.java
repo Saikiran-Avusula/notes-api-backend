@@ -34,9 +34,15 @@ public class JwtUtil {
     private Key getSigningKey(){
         // Ensure the key is at least 512 bits (64 bytes) for HS512
         byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+        // Pad the key if it's too short
         if (keyBytes.length < 64) {
-            // If secret is too short, generate a secure key
-            return Keys.secretKeyFor(SignatureAlgorithm.HS512);
+            byte[] paddedKey = new byte[64];
+            System.arraycopy(keyBytes, 0, paddedKey, 0, keyBytes.length);
+            // Fill remaining bytes with the secret repeated
+            for (int i = keyBytes.length; i < 64; i++) {
+                paddedKey[i] = keyBytes[i % keyBytes.length];
+            }
+            keyBytes = paddedKey;
         }
         return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS512.getJcaName());
     }

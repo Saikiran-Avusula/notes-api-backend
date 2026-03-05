@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 
 
 
@@ -30,7 +32,13 @@ public class JwtUtil {
     private Long expiration;
 
     private Key getSigningKey(){
-        return Keys.hmacShaKeyFor(secret.getBytes());
+        // Ensure the key is at least 512 bits (64 bytes) for HS512
+        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);
+        if (keyBytes.length < 64) {
+            // If secret is too short, generate a secure key
+            return Keys.secretKeyFor(SignatureAlgorithm.HS512);
+        }
+        return new SecretKeySpec(keyBytes, SignatureAlgorithm.HS512.getJcaName());
     }
 
 

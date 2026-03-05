@@ -1,6 +1,6 @@
 package com.notesapi.config;
 
-import com.notesapi.entity.User;
+import com.notesapi.model.User;
 import com.notesapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
